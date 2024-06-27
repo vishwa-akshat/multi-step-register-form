@@ -24,15 +24,17 @@
                             <div class="form-group">
                                 <label class="label" for="name">Name</label>
                             <input
+                                name="name"
                                 class="input"
                                 type="text"
                                 id="name"
                                 placeholder="enter your name"
-                            />
+                                />
                             </div>
                             <div class="form-group">
                                 <label class="label" for="email">Email</label>
                                 <input
+                                    name="email"
                                     class="input"
                                     type="email"
                                     id="email"
@@ -43,6 +45,14 @@
                 </div>
                 <div class="btn-wrapper">
                     <button class="btn">Continue</button>
+                </div>
+            </div>
+            <div class="steps-wrapper">
+                <p class="steps-text">Step <span id="current-step">1</span> of 3</p>
+                <div class="steps">
+                    <div class="step filled active"></div>
+                    <div class="step"></div>
+                    <div class="step"></div>
                 </div>
             </div>
         </div>
