@@ -36,17 +36,31 @@ function addCheckboxListeners() {
         });
     });
 }
+setTimeout(() => {
+    document.querySelector(".form").style.opacity = "1";
+    document.querySelector(".form").style.transform = "translateX(0)";
+}, 10);
 
 btn.addEventListener("click", () => {
     if (steps === 1) {
+        if (appData.name === "" || appData.email === "") {
+            alert("Please enter your name and email");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(appData.email)) {
+            alert("Please enter a valid email");
+            return;
+        }
         title.innerText = "Which topics are you interested in?";
         currentStepText.innerText = "2";
         stepBlocks[0].classList.remove("active");
-
+        btn.innerText = "Continue";
         stepBlocks[1].classList.add("active");
         stepBlocks[1].classList.add("filled");
         content.innerHTML = `
-            <div class="form-second">
+            <div class="form-second" style="transform: translateX(100%); transition: transform 0.9s ease-in-out;">
                 <div class="form-second-group">
                     <input class="checkbox" id="Software Development" type="checkbox" />
                     <label class="checkbox-label" for="Software Development"> Software Development </label>
@@ -61,6 +75,10 @@ btn.addEventListener("click", () => {
                 </div>
             </div>
         `;
+        setTimeout(() => {
+            document.querySelector(".form-second").style.transform =
+                "translateX(0)";
+        }, 10);
         addCheckboxListeners();
         steps++;
     } else if (steps === 2) {
@@ -69,8 +87,9 @@ btn.addEventListener("click", () => {
         stepBlocks[2].classList.add("active");
         stepBlocks[2].classList.add("filled");
         currentStepText.innerText = "3";
+        btn.innerText = "Confirm";
         content.innerHTML = `
-            <div class="summary">
+            <div class="summary" style="opacity: 0; transform: translateX(100%); transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;">
                 <div class="summary-group">
                     <p class="summary-label">Name: </p>
                     <p class="summary-value">${appData.name}</p>
@@ -92,15 +111,21 @@ btn.addEventListener("click", () => {
                 </div>
             </div>
         `;
+        setTimeout(() => {
+            document.querySelector(".summary").style.opacity = "1";
+            document.querySelector(".summary").style.transform =
+                "translateX(0)";
+        }, 10);
         steps++;
     } else if (steps === 3) {
+        alert("✅ Success");
         title.innerText = "Register";
         currentStepText.innerText = "1";
         stepBlocks[2].classList.remove("active");
         stepBlocks[2].classList.remove("filled");
         stepBlocks[1].classList.remove("filled");
         stepBlocks[0].classList.add("active");
-
+        btn.innerText = "Continue";
         content.innerHTML = `
             <div class="form">
                 <div class="form-group">

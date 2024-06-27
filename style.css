@@ -29,8 +29,10 @@ h1 {
 }
 
 .container {
+    position: relative;
     display: grid;
     place-items: center;
+    overflow: hidden;
     height: 100%;
 }
 
@@ -224,4 +226,29 @@ h1 {
 .summary-value-list {
     margin-left: 1.8rem;
     margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 13px;
+    }
+
+    .rad {
+        position: absolute;
+        width: 80%;
+    }
+    .rad-1 {
+        top: -20%;
+        left: -25%;
+    }
+    .rad-2 {
+        bottom: -20%;
+        right: -25%;
+    }
+
+    .card {
+        width: 90vw;
+
+        padding: 2rem 2rem 2rem;
+    }
 }
